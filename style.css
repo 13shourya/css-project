@@ -1,0 +1,625 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ff0022;    /* Bright Sky Blue */
+    --secondary-color: #00ffea;  /* Peachy Pink */
+    --background-color: #ffffff; /* Light Gray */
+    --text-color: #333333;       /* Dark Gray for better contrast */
+    --accent-color: #00ff99;     /* Lime Green */
+    --button-hover: #ff0e0e;     /* Bright Orange for button hover effect */
+    --footer-bg: #3ef89e;        /* Lavender for footer background */
+}
+
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+header {
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    padding: 1rem; /* Optional: Space around header content */
+    background: var(--background-color); /* Header background color */
+}
+
+header .logo {
+    font-family: var(--heading-font), sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Hover Effect */
+header .logo:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Animated Underline */
+header .logo::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+header .logo:hover::after {
+    width: 100%;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    background:url('hero.jpg') no-repeat center center; /* Ensure gradient is layered correctly */
+    background-size: cover; /* Ensures the image covers the section without distortion */
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+
+.hero h1 {
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero .btn-donate {
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.hero .btn-donate:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+.hero .btn-donate:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* About Section */
+.about {
+    background: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+    background: url('hero.jpg') no-repeat center center/cover;
+    color: #fff;
+}
+
+.about h2 {
+    font-family: var(--heading-font);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.about p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+/* Services Section */
+.services {
+    background: var(--background-color);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.services h2 {
+    font-family: var(--heading-font);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+/* Flexbox for Centering */
+.services .service-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center-align horizontally */
+    gap: 2rem; /* Space between cards */
+}
+
+/* Individual Cards */
+.services .card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center; /* Center-align text inside the card */
+    max-width: 300px; /* Card width */
+    flex: 1 1 calc(33.333% - 2rem); /* Responsive sizing for 3 columns */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Image */
+.services .service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Card Content */
+.services .card h3 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.services .card p {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+
+/* Adjust for Smaller Screens */
+@media (max-width: 768px) {
+    .services .service-container {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center;
+    }
+
+    .services .card {
+        flex: 1 1 100%; /* Full-width cards */
+        max-width: 90%; /* Ensure padding on smaller screens */
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .services .card {
+        margin: 1rem auto;
+    }
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+/* Donate Page Styles */
+.donate-section {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color), var(--primary-color));
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.donate-section h2 {
+    font-family: var(--heading-font);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.donate-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+.donation-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.donation-form label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.donation-form input,
+.donation-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--body-font);
+}
+
+.donation-form textarea {
+    resize: none;
+}
+
+.donation-form .btn-submit {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.donation-form .btn-submit:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    transform: translateY(-5px);
+}
+
+.donation-form .btn-submit:active {
+    transform: translateY(0);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #1e3c72, #2a5298);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+    
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #f3c623;
+}
+
+/* Advanced Animations */
+@keyframes gradient-bg {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floating-card {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes neon-glow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* About Page */
+.about {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+.about-section {
+    padding: 10rem 2rem;
+    background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    background-size: 400% 400%;
+    animation: gradient-bg 8s ease infinite;
+    text-align: center;
+    color: var(--text-color);
+}
+.about-section h2 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.about-section p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 2;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.about-section img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-section img:hover {
+    transform: scale(1.2) rotate(10deg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* Services Page */
+.services-section {
+    padding: 8rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.services-section h2 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 4rem;
+    color: #ffdd57;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.service-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+}
+
+.card {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 5px 10px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    flex: 1 1 calc(30% - 2rem);
+    max-width: 320px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: floating-card 6s infinite ease-in-out;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 10px 20px rgba(255, 255, 255, 0.3);
+}
+
+.card h3 {
+    font-size: 2rem;
+    color: #fffa65;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.card p {
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    line-height: 1.7;
+}
+
+.card::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 50%;
+    margin: 1.5rem auto 0;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    border-radius: 5px;
+}
+
+/* Contact Page */
+.contact-section {
+    padding: 10rem 2rem;
+    background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color));
+    background-size: 400% 400%;
+    animation: gradient-bg 12s ease infinite;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.contact-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.contact-section p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 2;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form {
+    border-color: var(--secondary-color);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #fff;
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.contact-form:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+}
+
+.contact-form label {
+    color: #f1f1f1;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #34e89e;
+    box-shadow: 0 0 10px rgba(52, 232, 158, 0.7);
+    outline: none;
+}
+
+.contact-form .btn-submit {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background: #bf1f1f;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    animation: neon-glow 2s infinite alternate;
+}
+
+.contact-form .btn-submit:hover {
+    transform: scale(1.1);
+    background: #fc2424;
+    box-shadow: 0 15px 30px rgba(243, 194, 35, 0.5);
+}
